@@ -236,7 +236,7 @@ body, html {
   font-family: 'Dancing Script', cursive;
   font-size: 16px;
   position: absolute;
-  bottom: 10px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   color: #333;
