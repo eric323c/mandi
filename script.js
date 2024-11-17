@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const photos = document.querySelectorAll('.photo img');
   const modal = document.createElement('div');
   modal.classList.add('modal');
-  modal.style.display = 'none';
+  modal.style.display = 'none'; // Ensure modal is hidden initially
   modal.style.position = 'fixed';
   modal.style.top = '0';
   modal.style.left = '0';
@@ -45,7 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(modal);
 
   photos.forEach(photo => {
-    photo.addEventListener('click', () => {
+    photo.addEventListener('click', (e) => {
+      e.preventDefault(); // Prevent default behavior
       modalImage.src = photo.src;
       modal.style.display = 'flex';
     });
