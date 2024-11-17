@@ -19,16 +19,15 @@ body, html {
   justify-content: center;
   align-items: center;
 }
-
 /* Splash Section */
 .splash:after {
   content: '';
   position: absolute;
-  bottom: -50px; /* Move the gradient further down */
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 150px; /* Increase the height for a smoother transition */
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #f8f4f0 100%);
+  height: 200px; /* Make the gradient taller for a smoother transition */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #f8f4f0 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -190,11 +189,11 @@ body, html {
 .section2:before {
   content: '';
   position: absolute;
-  top: -50px; /* Move the gradient further up */
+  top: 0;
   left: 0;
   width: 100%;
-  height: 150px; /* Increase the height for a smoother transition */
-  background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, #f8f4f0 100%);
+  height: 200px; /* Match the gradient height with the above */
+  background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, #f8f4f0 100%);
   pointer-events: none;
   z-index: 1;
 }
