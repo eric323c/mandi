@@ -13,7 +13,7 @@ body, html {
   position: relative;
   width: 100%;
   height: 100vh;
-  background: url('https://images.pexels.com/photos/17563546/pexels-photo-17563546/free-photo-of-a-bench-in-a-pavilion.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center;
+  background: url('https://media-api.xogrp.com/images/4749e339-3492-471f-8e1d-0dea7c8b97d8~rt_auto-cr_0.0.2500.1666-rs_2500.1666?ordering=explicit') no-repeat center center;
   background-size: cover;
   display: flex;
   justify-content: center;
