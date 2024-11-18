@@ -277,3 +277,116 @@ body, html {
   cursor: pointer;
   font-family: 'Arial', sans-serif;
 }
+/* Q&A Section */
+.qa-section {
+  position: relative;
+  background-color: #f8f4f0;
+  padding: 50px 20px;
+  text-align: center;
+  overflow: hidden; /* Ensures background images don’t spill out */
+}
+
+/* Q&A Header */
+.qa-header h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 48px;
+  color: #333;
+  margin-bottom: 30px;
+  transform: rotate(-5deg);
+}
+
+/* Q&A Section */
+.qa-section {
+  position: relative;
+  background-color: #f8f4f0;
+  padding: 50px 20px;
+  text-align: center;
+  overflow: hidden; /* Ensures background images don’t spill out */
+}
+
+/* Q&A Header */
+.qa-header h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 48px;
+  color: #333;
+  margin-bottom: 30px;
+  transform: rotate(-5deg);
+}
+
+/* Q&A Section */
+.section-qa {
+  position: relative;
+  background-color: #faf7f2;
+  padding: 50px 20px;
+}
+
+.qa-header h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 48px;
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.qa-content {
+  position: relative;
+  z-index: 2; /* Ensure content is above images */
+}
+
+.qa-item {
+  margin-bottom: 30px;
+}
+
+.qa-question {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 24px;
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.qa-answer {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.qa-background-images {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Disable interaction with background images */
+  z-index: 1;
+}
+
+.qa-image {
+  position: absolute;
+  opacity: 0.2;
+  border: 4px solid white; /* Add white border around images */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.image1 {
+  top: 20px;
+  left: 10%;
+  width: 150px;
+  transform: rotate(-10deg);
+}
+
+.image2 {
+  bottom: 50px;
+  right: 15%;
+  width: 180px;
+  transform: rotate(15deg);
+}
+
+.image3 {
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  transform: translate(-50%, -50%) rotate(-5deg);
+}
