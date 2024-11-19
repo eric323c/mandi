@@ -62,7 +62,10 @@ body, html {
   font-size: 16px;
   color: #ffffff;
 }
-
+.date:hover {
+color: #c3a58f;
+font-size: 50px;
+}
 
 /* Title */
 .title {
