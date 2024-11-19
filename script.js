@@ -65,3 +65,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  // Smooth scrolling functionality
+  const navbarLinks = document.querySelectorAll(".navbar a");
+
+  navbarLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute("href").substring(1);
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+});
