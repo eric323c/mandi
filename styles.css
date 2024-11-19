@@ -60,11 +60,13 @@ body, html {
   top: 20px;
   left: 20px;
   font-size: 16px;
-  color: #ffffff;
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for effects */
 }
+
 .date:hover {
-color: #c3a58f;
-font-size: 50px;
+  transform: scale(1.2); /* Slightly enlarge the text on hover */
+  color: #c3a58f; /* Change color on hover */
+  cursor: pointer; /* Change cursor to pointer */
 }
 
 /* Title */
