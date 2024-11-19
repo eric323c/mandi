@@ -66,7 +66,6 @@ color: #ffffff;
 .date:hover {
   transform: scale(1.2); /* Slightly enlarge the text on hover */
   color: #c3a58f; /* Change color on hover */
-  cursor: pointer; /* Change cursor to pointer */
 }
 /* Title */
 .title {
