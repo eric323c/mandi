@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-document.addEventListener("DOMContentLoaded", () => {
   // Smooth scrolling functionality
   const navbarLinks = document.querySelectorAll(".navbar a");
 
