@@ -1,1 +1,17 @@
+{
+  "name": "mandi",
+  "version": "1.0.0",
+  "description": "Wedding Dashboard Project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "vercel build"
+  },
+  "dependencies": {
+    "firebase": "^11.0.2"
+  },
+  "devDependencies": {},
+  "author": "Eric",
+  "license": "MIT"
+}
 
