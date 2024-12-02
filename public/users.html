@@ -1,30 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Dashboard</title>
-    <link rel="stylesheet" href="users.css">
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Dashboard</title>
+  <link rel="stylesheet" href="users.css">
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js"></script>
 </head>
 <body>
-    <div id="dashboard">
-        <h1>Welcome to Your Wedding Dashboard</h1>
-        <form id="userForm">
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" placeholder="Enter your first name">
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" placeholder="Enter your last name">
-            <button type="submit">Find My Profile</button>
-        </form>
-        <div id="profileContainer" style="display:none;">
-            <h2>Welcome!</h2>
-            <p>Here's your personalized dashboard:</p>
-            <ul id="profileDetails"></ul>
-        </div>
+  <div class="container">
+    <h1>Welcome to Your Wedding Dashboard</h1>
+    <form id="userForm">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" placeholder="Enter your first name">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" placeholder="Enter your last name">
+      <button type="submit">Find My Profile</button>
+    </form>
+    <div id="profileContainer" style="display: none;">
+      <h2>Welcome!</h2>
+      <p>Here's your personalized dashboard:</p>
+      <div id="profileDetails"></div>
     </div>
-    <script src="users.js"></script>
+  </div>
+  <script>
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSy....", // Your Firebase API key
+      authDomain: "your-project-id.firebaseapp.com",
+      projectId: "your-project-id",
+      storageBucket: "your-project-id.appspot.com",
+      messagingSenderId: "123456789",
+      appId: "1:123456789:web:abcd1234",
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // DOM Elements
+    const form = document.getElementById("userForm");
+    const profileContainer = document.getElementById("profileContainer");
+    const profileDetails = document.getElementById("profileDetails");
+
+    // Form Submit Handler
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const firstName = document.getElementById("firstName").value.trim();
+      const lastName = document.getElementById("lastName").value.trim();
+
+      if (!firstName || !lastName) {
+        alert("Please enter both your first and last name.");
+        return;
+      }
+
+      try {
+        // Try to fetch user data
+        const docRef = db.collection("guests").doc(`${firstName}_${lastName}`);
+        const doc = await docRef.get();
+
+        if (doc.exists) {
+          // If user exists
+          const userData = doc.data();
+          profileContainer.style.display = "block";
+          profileDetails.innerHTML = `
+            <p><strong>Name:</strong> ${userData.firstName} ${userData.lastName}</p>
+            <p><strong>Role:</strong> ${userData.role || "N/A"}</p>
+            <p><strong>RSVP Status:</strong> ${userData.rsvpStatus || "Pending"}</p>
+          `;
+        } else {
+          // If user does not exist, create a new profile
+          await docRef.set({
+            firstName,
+            lastName,
+            role: "Guest", // Default role
+            rsvpStatus: "Pending",
+          });
+          alert("Your profile has been created. Please refresh to view it.");
+        }
+      } catch (error) {
+        console.error("Error fetching or creating user data:", error);
+        alert("An error occurred. Please try again.");
+      }
+    });
+  </script>
 </body>
 </html>
+
