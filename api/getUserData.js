@@ -1,23 +1,27 @@
-import { getUser } from "../firebase/firebase.js";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { app } from "../public/firebase.js";
+
+const db = getFirestore(app);
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
+  if (req.method === "POST") {
+    const { firstName, lastName } = JSON.parse(req.body);
 
-  const { firstName, lastName } = req.body;
+    try {
+      const docRef = doc(db, "guests", `${firstName}_${lastName}`);
+      const docSnap = await getDoc(docRef);
 
-  if (!firstName || !lastName) {
-    return res.status(400).json({ error: "First name and last name are required" });
-  }
-
-  try {
-    const user = await getUser(firstName, lastName);
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
+      if (docSnap.exists()) {
+        res.status(200).json(docSnap.data());
+      } else {
+        res.status(404).json({ error: "Profile not found." });
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      res.status(500).json({ error: "Error fetching user data." });
     }
-    res.status(200).json(user);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to fetch user" });
+  } else {
+    res.setHeader("Allow", ["POST"]);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 }
