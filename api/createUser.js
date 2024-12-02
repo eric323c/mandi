@@ -19,8 +19,22 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { firstName, lastName, role, rsvpStatus, tasks, hasPlusOne, message } = req.body;
+    const {
+      firstName,
+      lastName,
+      role = "Friend", // Default to "Friend" if role is not provided
+      rsvpStatus = "Pending", // Default RSVP status
+      tasks = [], // Default empty task array
+      hasPlusOne = false, // Default to no plus one
+      message = "", // Default empty message
+      isBachelor = false, // Default not a bachelor
+      checklistProgress = 0, // Default 0% progress
+      notifications = false, // Default notifications off
+      dietaryRestriction = "", // Default no dietary restrictions
+      totalGuests = 1, // Default 1 (the guest themselves)
+    } = req.body;
 
+    // Add the document to Firestore
     await addDoc(collection(db, "guests"), {
       firstName,
       lastName,
@@ -29,6 +43,11 @@ export default async function handler(req, res) {
       tasks,
       hasPlusOne,
       message,
+      isBachelor,
+      checklistProgress,
+      notifications,
+      dietaryRestriction,
+      totalGuests,
     });
 
     res.status(200).json({ message: "User created successfully!" });
