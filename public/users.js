@@ -1,4 +1,4 @@
-// Firebase configuration (global firebase object is used, no import statements)
+// Firebase configuration (global firebase object used, no import statements)
 const firebaseConfig = {
     apiKey: "AIzaSyDK7QoOBnf73q8V0H7vdZgeV9knY1GQhZw",
     authDomain: "mandi-b5b19.firebaseapp.com",
@@ -8,11 +8,11 @@ const firebaseConfig = {
     appId: "1:53505043322:web:dede68f8aeca80c7de84c3"
 };
 
-// Initialize Firebase (global firebase object)
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// Select elements
+// Select form and profile container elements
 const form = document.getElementById("userForm");
 const profileContainer = document.getElementById("profileContainer");
 const profileDetails = document.getElementById("profileDetails");
@@ -30,15 +30,14 @@ form.addEventListener("submit", async (e) => {
     }
 
     try {
-        // Try fetching user
         const docRef = db.collection("guests").doc(`${firstName}_${lastName}`);
         const doc = await docRef.get();
 
         if (doc.exists) {
-            // User exists - show profile
+            // User exists
             displayProfile(doc.data());
         } else {
-            // User does not exist - create new profile
+            // Create new user profile
             const defaultData = {
                 firstName,
                 lastName,
@@ -58,7 +57,7 @@ form.addEventListener("submit", async (e) => {
     }
 });
 
-// Display profile
+// Display the user profile in the container
 function displayProfile(data) {
     profileDetails.innerHTML = `
         <li><strong>Name:</strong> ${data.firstName} ${data.lastName}</li>
