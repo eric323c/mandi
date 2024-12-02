@@ -1,96 +1,90 @@
 body {
-  font-family: 'Arial', sans-serif;
-  background: #f8f4f0;
+  font-family: 'Dancing Script', cursive, 'Arial', sans-serif;
+  background-color: #f8f4f0;
+  color: #333;
   margin: 0;
   padding: 0;
 }
 
-.profile-container {
+.container {
   max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
 }
 
-.header {
+h1 {
   text-align: center;
-  margin-bottom: 30px;
-}
-
-.header h1 {
   font-size: 2.5rem;
-}
-
-input[type="text"] {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  width: calc(100% - 20px);
-}
-
-button {
-  padding: 10px;
-  background-color: #c3a58f;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #b28b73;
-}
-
-.content {
-  margin-top: 20px;
-}
-
-.rsvp-details, .checklist, .notifications {
   margin-bottom: 20px;
 }
 
-.task {
+form {
   display: flex;
-  align-items: center;
-  margin: 5px 0;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.notification {
+input,
+textarea,
+select,
+button {
+  font-size: 1rem;
   padding: 10px;
-  margin: 5px 0;
+  border-radius: 5px;
   border: 1px solid #ccc;
 }
-/* Navbar */
-.navbar {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  gap: 20px;
-  z-index: 1000;
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: none;
+  border-color: #c3a58f;
 }
 
-.navbar a {
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: bold;
-  color: #ffffff;
-  transition: color 0.3s ease;
+button {
+  background-color: #c3a58f;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
 }
 
-.navbar a:hover {
-  color: #c3a58f;
+button:hover {
+  background-color: #a57a63;
 }
 
-/* Date */
-.date {
-color: #ffffff;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 16px;
-  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for effects */
+.profile-container {
+  margin-top: 30px;
 }
-.date:hover {
-  transform: scale(1.2); /* Slightly enlarge the text on hover */
-  color: #c3a58f; /* Change color on hover */
+
+.profile-card {
+  background: #f8f4f0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+
+.profile-card p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.alert {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
