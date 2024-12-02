@@ -1,30 +1,34 @@
+import { getGuestByName, createGuest } from "./firebase.js";
+
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("findProfileForm");
-  const profile = document.getElementById("profile");
+  const form = document.querySelector("#profileForm");
+  const rsvpSection = document.querySelector("#rsvpSection");
+  const profileContainer = document.querySelector("#profileContainer");
+
+  // Hide RSVP section until user logs in
+  rsvpSection.style.display = "none";
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const firstName = document.getElementById("firstName").value;
-    const lastName = document.getElementById("lastName").value;
+    const firstName = document.querySelector("#firstName").value.trim();
+    const lastName = document.querySelector("#lastName").value.trim();
 
-    try {
-      const res = await fetch("/api/getUser", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName, lastName }),
-      });
-
-      if (res.ok) {
-        const user = await res.json();
-        document.getElementById("profileName").textContent = `${user.firstName} ${user.lastName}`;
-        document.getElementById("profileRole").textContent = user.role;
-        profile.style.display = "block";
-      } else {
-        alert("User not found. Please create your profile.");
-        // Handle profile creation...
-      }
-    } catch (error) {
-      console.error("Error fetching user profile:", error);
+    if (!firstName || !lastName) {
+      alert("Please enter both your first and last name.");
+      return;
     }
+
+    let userData = await getGuestByName(firstName, lastName);
+    if (!userData) {
+      userData = await createGuest(firstName, lastName, "Friend");
+      alert("New profile created. Please complete the RSVP.");
+    }
+
+    profileContainer.innerHTML = `
+      <h2>Welcome, ${userData.firstName}!</h2>
+      <p>Your Role: ${userData.role || "Not specified"}</p>
+      <p>RSVP Status: ${userData.rsvpStatus || "Pending"}</p>
+    `;
+    rsvpSection.style.display = "block";
   });
 });
