@@ -1,68 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const userForm = document.querySelector("#userForm");
-  const rsvpForm = document.querySelector("#rsvpForm");
+  const form = document.querySelector("#guestForm");
+  const profileContainer = document.querySelector("#profileContainer");
 
-  // Fetch user data when they enter their name
-  userForm.addEventListener("submit", async (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const firstName = document.querySelector("#firstName").value;
-    const lastName = document.querySelector("#lastName").value;
+
+    const firstName = document.querySelector("#firstName").value.trim();
+    const lastName = document.querySelector("#lastName").value.trim();
+
+    profileContainer.innerHTML = "<p>Loading...</p>";
 
     try {
-      const response = await fetch("/api/getUserData", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName, lastName }),
-      });
+      const response = await fetch(`/api/getUserData?firstName=${firstName}&lastName=${lastName}`);
+      if (!response.ok) {
+        throw new Error("Guest not found");
+      }
 
       const data = await response.json();
-      if (data.user) {
-        displayUserData(data.user); // Show dynamic content
-      } else {
-        alert("User not found.");
-      }
+      renderProfile(data);
     } catch (error) {
-      console.error("Error fetching user data:", error);
+      console.error(error);
+      profileContainer.innerHTML = `<div class="alert">Error: ${error.message}</div>`;
     }
   });
 
-  // Submit RSVP data
-  rsvpForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const formData = {
-      firstName: document.querySelector("#firstName").value,
-      lastName: document.querySelector("#lastName").value,
-      rsvpStatus: document.querySelector("#rsvpStatus").value,
-      message: document.querySelector("#message").value,
-      hasPlusOne: document.querySelector("#hasPlusOne").checked,
-    };
-
-    try {
-      const response = await fetch("/api/submitRSVP", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        alert("RSVP submitted successfully!");
-      } else {
-        alert("Error submitting RSVP.");
-      }
-    } catch (error) {
-      console.error("Error submitting RSVP:", error);
-    }
-  });
+  function renderProfile(data) {
+    profileContainer.innerHTML = `
+      <div class="profile-card">
+        <h2>Welcome ${data.role === "Bachelor" ? "Bachelor" : "Guest"} ${data.firstName}!</h2>
+        <p><strong>RSVP Status:</strong> ${data.rsvpStatus}</p>
+        <p><strong>Message for Couple:</strong> ${data.message || "No message provided"}</p>
+        <p><strong>Tasks:</strong> ${data.tasks.length > 0 ? data.tasks.join(", ") : "No tasks assigned"}</p>
+      </div>
+    `;
+  }
 });
-
-// Helper function to display user data
-function displayUserData(user) {
-  const userDetails = document.querySelector("#userDetails");
-  userDetails.innerHTML = `
-    <h3>Welcome, ${user.firstName} ${user.lastName}!</h3>
-    <p>Role: ${user.role}</p>
-    <p>Tasks: ${user.tasks.join(", ")}</p>
-    <p>RSVP Status: ${user.rsvpStatus}</p>
-  `;
-}
