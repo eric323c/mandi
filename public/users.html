@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wedding Dashboard</title>
-  <link rel="stylesheet" href="public/users.css">
+  <title>Your Wedding Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
+  <div id="app">
     <h1>Welcome to Your Wedding Dashboard</h1>
-    <p>Enter your details to access your personalized profile.</p>
-    <form id="profileForm">
+    <form id="profile-form">
       <label for="firstName">First Name:</label>
       <input type="text" id="firstName" placeholder="Enter your first name">
       <label for="lastName">Last Name:</label>
@@ -18,26 +17,88 @@
       <button type="submit">Find My Profile</button>
     </form>
 
-    <div id="profileSection" style="display: none;">
+    <div id="profile-container" style="display:none;">
       <h2>Welcome!</h2>
-      <p>Here's your personalized dashboard:</p>
-      <div class="details">
-        <h3>Your Details</h3>
-        <p><strong>Name:</strong> <span id="fullName"></span></p>
-        <p><strong>Role:</strong> <span id="role"></span></p>
-        <p><strong>RSVP Status:</strong> <span id="rsvpStatus"></span></p>
-        <p><strong>Dietary Restrictions:</strong> <span id="dietaryRestrictions"></span></p>
-      </div>
-      <div id="tasksSection" style="display: none;">
-        <h3>To-Do List for Bachelors/Bachelorettes</h3>
-        <ul id="tasksList"></ul>
-      </div>
-      <div id="checklistSection">
-        <h3>Your Checklist</h3>
-        <ul id="checklist"></ul>
-      </div>
+      <p>Here’s your personalized dashboard:</p>
+      <h3>Your Details</h3>
+      <p><strong>Name:</strong> <span id="user-name"></span></p>
+      <p><strong>Role:</strong> <span id="user-role"></span></p>
+      <p><strong>RSVP Status:</strong> <span id="user-rsvp"></span></p>
+      <p><strong>Dietary Restrictions:</strong> <span id="user-diet"></span></p>
+
+      <h3>To-Do List for Bachelors/Bachelorettes</h3>
+      <ul id="user-tasks"></ul>
+
+      <h3>Your Checklist</h3>
+      <ul id="user-checklist"></ul>
     </div>
   </div>
-  <script src="public/users.js" type="module"></script>
+
+  <!-- Firebase Configuration -->
+  <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js"></script>
+  <script>
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDK7QoOBnf73q8V0H7vdZgeV9knY1GQhZw",
+      authDomain: "mandi-b5b19.firebaseapp.com",
+      projectId: "mandi-b5b19",
+      storageBucket: "mandi-b5b19.appspot.com",
+      messagingSenderId: "53505043322",
+      appId: "1:53505043322:web:dede68f8aeca80c7de84c3",
+      measurementId: "G-T58TB5HC3L"
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    document.getElementById("profile-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const firstName = document.getElementById("firstName").value.trim();
+      const lastName = document.getElementById("lastName").value.trim();
+
+      if (!firstName || !lastName) {
+        alert("Please enter both your first and last name.");
+        return;
+      }
+
+      const guestId = `${firstName}_${lastName}`;
+      const docRef = db.collection("guests").doc(guestId);
+
+      try {
+        const doc = await docRef.get();
+        if (doc.exists) {
+          const data = doc.data();
+          document.getElementById("user-name").textContent = `${data.firstName} ${data.lastName}`;
+          document.getElementById("user-role").textContent = data.role || "Guest";
+          document.getElementById("user-rsvp").textContent = data.rsvpStatus || "Pending";
+          document.getElementById("user-diet").textContent = data.dietaryRestrictions || "None";
+          document.getElementById("user-tasks").innerHTML = (data.tasks || []).map(task => `<li>${task}</li>`).join("");
+          document.getElementById("user-checklist").innerHTML = (data.checklist || []).map(item => `<li>${item}</li>`).join("");
+
+          document.getElementById("profile-container").style.display = "block";
+        } else {
+          const role = prompt("Are you Family or Friend?");
+          await docRef.set({
+            firstName,
+            lastName,
+            role: role || "Guest",
+            rsvpStatus: "Pending",
+            dietaryRestrictions: "",
+            tasks: [],
+            checklist: [],
+            isBachelor: false,
+          });
+
+          alert("Profile created successfully! Refresh to view your profile.");
+        }
+      } catch (error) {
+        console.error("Error fetching/creating profile:", error);
+        alert("An error occurred. Please try again.");
+      }
+    });
+  </script>
 </body>
 </html>
