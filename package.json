@@ -1,17 +1,10 @@
 {
-  "name": "mandi",
+  "name": "wedding-dashboard",
   "version": "1.0.0",
-  "description": "Wedding Dashboard Project",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "build": "vercel build"
+    "start": "node server.js"
   },
   "dependencies": {
-    "firebase": "^11.0.2"
-  },
-  "devDependencies": {},
-  "author": "Eric",
-  "license": "MIT"
+    "express": "^4.18.2"
+  }
 }
-
