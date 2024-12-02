@@ -26,43 +26,11 @@
     <section id="profileSection" class="hidden">
       <h2>Welcome!</h2>
       <p>Here’s your personalized dashboard:</p>
-
-      <div id="userDetails" class="info-box">
-        <h3>Your Details</h3>
-        <p><strong>Name:</strong> <span id="userName"></span></p>
-        <p><strong>Role:</strong> <span id="userRole"></span></p>
-        <p><strong>RSVP Status:</strong> <span id="userRsvpStatus"></span></p>
-        <p><strong>Dietary Restrictions:</strong> <span id="userDiet"></span></p>
-      </div>
-
-      <div id="bachelorTasks" class="info-box hidden">
-        <h3>To-Do List for Bachelors/Bachelorettes</h3>
-        <ul id="userTasks"></ul>
-      </div>
-
-      <div id="checklist" class="info-box">
-        <h3>Your Checklist</h3>
-        <ul id="userChecklist"></ul>
-      </div>
-    </section>
-
-    <section id="rsvpSection" class="hidden">
-      <h3>RSVP</h3>
-      <form id="rsvpForm">
-        <label for="rsvpStatus">Will you be attending?</label>
-        <select id="rsvpStatus">
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-        <label for="hasPlusOne">Are you bringing a plus one?</label>
-        <input type="checkbox" id="hasPlusOne">
-        <label for="message">Message for the couple:</label>
-        <textarea id="message" placeholder="Write your message here"></textarea>
-        <button type="submit">Submit RSVP</button>
-      </form>
+      <div id="userDetails" class="info-box"></div>
+      <div id="tasksSection" class="hidden"></div>
     </section>
   </div>
 
-  <script src="users.js" type="module"></script>
+  <script type="module" src="users.js"></script>
 </body>
 </html>
