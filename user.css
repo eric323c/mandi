@@ -1,56 +1,50 @@
 body {
   font-family: 'Arial', sans-serif;
+  background: #f8f4f0;
   margin: 0;
   padding: 0;
-  background: #f8f4f0;
 }
 
 .profile-container {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 20px;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .header h1 {
   font-size: 2.5rem;
-  color: #333;
 }
 
 input[type="text"] {
   padding: 10px;
-  font-size: 1rem;
   border: 1px solid #ddd;
   border-radius: 5px;
   width: calc(100% - 20px);
-  margin-top: 10px;
 }
 
 button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  margin-top: 10px;
-  background: #c3a58f;
-  border: none;
+  padding: 10px;
+  background-color: #c3a58f;
   color: #fff;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 button:hover {
-  background: #b28b73;
+  background-color: #b28b73;
 }
 
 .content {
   margin-top: 20px;
 }
 
-.rsvp-details,
-.checklist,
-.notifications {
+.rsvp-details, .checklist, .notifications {
   margin-bottom: 20px;
 }
 
@@ -60,19 +54,8 @@ button:hover {
   margin: 5px 0;
 }
 
-.task.completed label {
-  text-decoration: line-through;
-}
-
 .notification {
-  background: #ffd5d5;
   padding: 10px;
   margin: 5px 0;
-  border-radius: 5px;
-  color: #333;
-}
-
-.error {
-  color: red;
-  display: none;
+  border: 1px solid #ccc;
 }
