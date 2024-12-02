@@ -1,60 +1,78 @@
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f8f8f8;
-  color: #333;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  background: #f8f4f0;
 }
 
-#welcome-container {
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
-#content-container {
-  text-align: center;
+.header h1 {
+  font-size: 2.5rem;
+  color: #333;
 }
 
-.hidden {
-  display: none;
-}
-
-h1 {
-  font-family: 'Dancing Script', cursive;
-  font-size: 3rem;
-  color: #555;
-}
-
-h2 {
-  font-size: 1.5rem;
-  color: #222;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
+input[type="text"] {
+  padding: 10px;
   font-size: 1rem;
-  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: calc(100% - 20px);
+  margin-top: 10px;
 }
 
 button {
-  background-color: #007BFF;
-  color: white;
-  border: none;
   padding: 10px 20px;
-  margin: 20px 0;
-  border-radius: 5px;
+  font-size: 1rem;
+  margin-top: 10px;
+  background: #c3a58f;
+  border: none;
+  color: #fff;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background: #b28b73;
+}
+
+.content {
+  margin-top: 20px;
+}
+
+.rsvp-details,
+.checklist,
+.notifications {
+  margin-bottom: 20px;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.task.completed label {
+  text-decoration: line-through;
+}
+
+.notification {
+  background: #ffd5d5;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  color: #333;
+}
+
+.error {
+  color: red;
+  display: none;
 }
