@@ -1,20 +1,34 @@
-import { createUser } from "../firebase/firebase.js";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { app } from "../public/firebase.js";
+
+const db = getFirestore(app);
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
+  if (req.method === "POST") {
+    const { firstName, lastName, role } = JSON.parse(req.body);
 
-  const { firstName, lastName, role } = req.body;
+    try {
+      const docRef = doc(db, "guests", `${firstName}_${lastName}`);
+      const defaultData = {
+        firstName,
+        lastName,
+        role: role || "Guest",
+        rsvpStatus: "Pending",
+        dietaryRestrictions: "",
+        hasPlusOne: false,
+        tasks: [],
+        checklist: [],
+        isBachelor: false,
+      };
 
-  if (!firstName || !lastName || !role) {
-    return res.status(400).json({ error: "Missing required fields" });
-  }
-
-  try {
-    const newUser = await createUser(firstName, lastName, role);
-    res.status(200).json(newUser);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to create user" });
+      await setDoc(docRef, defaultData);
+      res.status(201).json({ message: "Profile created successfully." });
+    } catch (error) {
+      console.error("Error creating user profile:", error);
+      res.status(500).json({ error: "Error creating user profile." });
+    }
+  } else {
+    res.setHeader("Allow", ["POST"]);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 }
