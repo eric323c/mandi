@@ -3,56 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Profile</title>
+  <title>Your Wedding Dashboard</title>
   <link rel="stylesheet" href="users.css">
-  <script type="module" src="users.js" defer></script>
+  <script type="module" src="users.js"></script>
 </head>
 <body>
-  <!-- Main Container -->
-  <div class="container">
-    <!-- Welcome Header -->
-    <header class="welcome-section">
+  <div class="dashboard-container">
+    <header class="header">
       <h1>Welcome to Your Wedding Dashboard</h1>
       <p>Enter your details below to see your personalized profile.</p>
     </header>
 
-    <!-- Form to Search for User -->
-    <section class="user-form-section">
-      <form id="userForm" class="user-form">
+    <!-- Login Section -->
+    <section id="login-section" class="login-section">
+      <div class="login-form">
         <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" placeholder="Enter your first name" required>
+        <input type="text" id="firstName" placeholder="Enter your first name">
 
         <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" placeholder="Enter your last name" required>
+        <input type="text" id="lastName" placeholder="Enter your last name">
 
-        <button type="submit">Find My Profile</button>
-      </form>
+        <button id="findProfileBtn" class="btn">Find My Profile</button>
+      </div>
     </section>
 
-    <!-- User Details Section -->
-    <section id="userDetails" class="user-details">
-      <!-- Content will be dynamically added here -->
+    <!-- Profile Section -->
+    <section id="profile-section" class="profile-section hidden">
+      <div class="profile-header">
+        <h2 id="welcomeMessage">Welcome!</h2>
+        <p>Here’s your personalized dashboard:</p>
+      </div>
+
+      <div class="profile-info">
+        <h3>Your Details</h3>
+        <p><strong>Name:</strong> <span id="userFullName"></span></p>
+        <p><strong>Role:</strong> <span id="userRole"></span></p>
+        <p><strong>RSVP Status:</strong> <span id="rsvpStatus"></span></p>
+        <p><strong>Dietary Restrictions:</strong> <span id="dietaryRestrictions"></span></p>
+      </div>
+
+      <div class="dynamic-content">
+        <div id="tasksSection" class="hidden">
+          <h3>To-Do List for Bachelors/Bachelorettes</h3>
+          <ul id="tasksList"></ul>
+        </div>
+
+        <div id="guestChecklistSection" class="hidden">
+          <h3>Your Checklist</h3>
+          <ul id="checklistItems"></ul>
+        </div>
+      </div>
     </section>
 
-    <!-- RSVP Form -->
-    <section id="rsvpSection" class="rsvp-section hidden">
-      <h2>RSVP</h2>
+    <!-- RSVP Section -->
+    <section id="rsvp-section" class="rsvp-section hidden">
+      <h3>RSVP</h3>
       <form id="rsvpForm">
-        <label for="rsvpStatus">Will you be attending?</label>
-        <select id="rsvpStatus">
+        <label for="attendance">Will you be attending?</label>
+        <select id="attendance">
           <option value="Yes">Yes</option>
           <option value="No">No</option>
         </select>
 
-        <label for="hasPlusOne">Are you bringing a plus one?</label>
-        <input type="checkbox" id="hasPlusOne">
+        <label for="plusOne">Are you bringing a plus one?</label>
+        <input type="checkbox" id="plusOne">
 
         <label for="message">Message for the couple:</label>
         <textarea id="message" placeholder="Write your message here"></textarea>
 
-        <button type="submit">Submit RSVP</button>
+        <button type="submit" class="btn">Submit RSVP</button>
       </form>
     </section>
+
+    <footer class="footer">
+      <p>&copy; 2024 Wedding Dashboard. All Rights Reserved.</p>
+    </footer>
   </div>
 </body>
 </html>
