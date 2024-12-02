@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Dashboard</title>
+  <link rel="stylesheet" href="/styles/users.css">
+  <script defer src="/users.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Your Wedding Dashboard</h1>
+    <form id="findProfileForm">
+      <label>First Name:</label>
+      <input type="text" id="firstName" required>
+      <label>Last Name:</label>
+      <input type="text" id="lastName" required>
+      <button type="submit">Find My Profile</button>
+    </form>
+
+    <div id="profile" style="display: none;">
+      <h2>Your Profile</h2>
+      <p><strong>Name:</strong> <span id="profileName"></span></p>
+      <p><strong>Role:</strong> <span id="profileRole"></span></p>
+    </div>
+  </div>
+</body>
+</html>
 
