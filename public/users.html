@@ -4,26 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wedding Dashboard</title>
-  <link rel="stylesheet" href="/styles/users.css">
-  <script defer src="/users.js"></script>
+  <link rel="stylesheet" href="public/users.css">
 </head>
 <body>
   <div class="container">
     <h1>Welcome to Your Wedding Dashboard</h1>
-    <form id="findProfileForm">
-      <label>First Name:</label>
-      <input type="text" id="firstName" required>
-      <label>Last Name:</label>
-      <input type="text" id="lastName" required>
+    <p>Enter your details to access your personalized profile.</p>
+    <form id="profileForm">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" placeholder="Enter your first name">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" placeholder="Enter your last name">
       <button type="submit">Find My Profile</button>
     </form>
 
-    <div id="profile" style="display: none;">
-      <h2>Your Profile</h2>
-      <p><strong>Name:</strong> <span id="profileName"></span></p>
-      <p><strong>Role:</strong> <span id="profileRole"></span></p>
+    <div id="profileSection" style="display: none;">
+      <h2>Welcome!</h2>
+      <p>Here's your personalized dashboard:</p>
+      <div class="details">
+        <h3>Your Details</h3>
+        <p><strong>Name:</strong> <span id="fullName"></span></p>
+        <p><strong>Role:</strong> <span id="role"></span></p>
+        <p><strong>RSVP Status:</strong> <span id="rsvpStatus"></span></p>
+        <p><strong>Dietary Restrictions:</strong> <span id="dietaryRestrictions"></span></p>
+      </div>
+      <div id="tasksSection" style="display: none;">
+        <h3>To-Do List for Bachelors/Bachelorettes</h3>
+        <ul id="tasksList"></ul>
+      </div>
+      <div id="checklistSection">
+        <h3>Your Checklist</h3>
+        <ul id="checklist"></ul>
+      </div>
     </div>
   </div>
+  <script src="public/users.js" type="module"></script>
 </body>
 </html>
-
