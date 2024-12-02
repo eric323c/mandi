@@ -59,3 +59,38 @@ button:hover {
   margin: 5px 0;
   border: 1px solid #ccc;
 }
+/* Navbar */
+.navbar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 20px;
+  z-index: 1000;
+}
+
+.navbar a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #c3a58f;
+}
+
+/* Date */
+.date {
+color: #ffffff;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 16px;
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for effects */
+}
+.date:hover {
+  transform: scale(1.2); /* Slightly enlarge the text on hover */
+  color: #c3a58f; /* Change color on hover */
+}
