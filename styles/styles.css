@@ -1,0 +1,394 @@
+/* Global Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: auto;
+  font-family: 'Arial', sans-serif;
+  overflow-x: hidden; /* Allow vertical scrolling but prevent horizontal scrolling */
+}
+
+/* Splash Section */
+.splash {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('https://media-api.xogrp.com/images/4749e339-3492-471f-8e1d-0dea7c8b97d8~rt_auto-cr_0.0.2500.1666-rs_2500.1666?ordering=explicit') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Splash Section */
+.splash:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px; /* Make the gradient taller for a smoother transition */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #f8f4f0 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Navbar */
+.navbar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 20px;
+  z-index: 1000;
+}
+
+.navbar a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #c3a58f;
+}
+
+/* Date */
+.date {
+color: #ffffff;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 16px;
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for effects */
+}
+.date:hover {
+  transform: scale(1.2); /* Slightly enlarge the text on hover */
+  color: #c3a58f; /* Change color on hover */
+}
+/* Title */
+.title {
+  position: absolute;
+  text-align: center;
+  font-family: 'Georgia', serif;
+  font-size: 48px;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.title .name {
+  display: block;
+}
+
+.title .and {
+  font-family: 'Cursive', serif;
+  font-size: 32px;
+  font-style: italic;
+  transform: rotate(-10deg);
+  display: block;
+}
+
+/* Polaroids */
+.polaroid-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.polaroid {
+  position: absolute;
+  background: #fff;
+  padding: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transform: rotate(var(--angle));
+  transition: transform 0.3s ease;
+}
+
+.polaroid img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Polaroid Sizes and Positions */
+.polaroid-1 {
+  width: 150px;
+  top: 5%;
+  left: 25%;
+  transform: rotate(-10deg);
+}
+
+.polaroid-2 {
+  width: 120px;
+  top: 40%;
+  left: 15%;
+  transform: rotate(8deg);
+}
+
+.polaroid-3 {
+  width: 180px;
+  bottom: 15%;
+  right: 10%;
+  transform: rotate(-12deg);
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+  .polaroid-1 {
+    width: 100px;
+    top: 10%;
+    left: 40%;
+    transform: rotate(-8deg);
+  }
+
+  .polaroid-2 {
+    width: 80px;
+    top: 50%;
+    left: 5%;
+    transform: rotate(6deg);
+  }
+
+  .polaroid-3 {
+    width: 120px;
+    bottom: 10%;
+    right: 15%;
+    transform: rotate(-10deg);
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .navbar {
+    gap: 10px;
+    top: 10px;
+    right: 15px;
+  }
+
+  .navbar a {
+    font-size: 12px;
+  }
+
+  .date {
+    top: 10px;
+    left: 10px;
+  }
+}
+
+/* Section 2 */
+.section2 {
+  background-color: #f8f4f0;
+  padding: 50px 0;
+  text-align: center;
+  position: relative;
+}
+
+/* Section 2 */
+.section2:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px; /* Match the gradient height with the above */
+  background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, #f8f4f0 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gallery-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 48px;
+  margin-bottom: 30px;
+  color: #333;
+  transform: rotate(-5deg);
+  display: inline-block;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.photo {
+  position: relative;
+  width: 200px;
+  text-align: center;
+  background: #fff;
+  border: 2px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  padding-bottom: 60px;
+}
+
+.photo img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0 0;
+}
+
+.photo-caption {
+  font-family: 'Dancing Script', cursive;
+  font-size: 16px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #333;
+  text-align: center;
+  content: attr(data-date);
+}
+
+.photo-caption::before {
+  content: attr(data-date);
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+.modal span {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  font-family: 'Arial', sans-serif;
+}
+/* Q&A Section */
+.qa-section {
+  position: relative;
+  background-color: #f8f4f0;
+  padding: 50px 20px;
+  text-align: center;
+  overflow: hidden; /* Ensures background images don’t spill out */
+}
+
+/* Q&A Header */
+.qa-header h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 48px;
+  color: #333;
+  margin-bottom: 30px;
+  transform: rotate(-5deg);
+}
+
+/* Q&A Section */
+.qa-section {
+  position: relative;
+  background-color: #f8f4f0;
+  padding: 50px 20px;
+  text-align: center;
+  overflow: hidden; /* Ensures background images don’t spill out */
+}
+
+/* Q&A Header */
+.qa-header h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 48px;
+  color: #333;
+  margin-bottom: 30px;
+  transform: rotate(-5deg);
+}
+
+/* Q&A Section */
+.section-qa {
+  position: relative;
+  background-color: #faf7f2;
+  padding: 50px 20px;
+}
+
+.qa-header h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 48px;
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.qa-content {
+  position: relative;
+  z-index: 2; /* Ensure content is above images */
+}
+
+.qa-item {
+  margin-bottom: 30px;
+}
+
+.qa-question {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 24px;
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.qa-answer {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.qa-background-images {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Disable interaction with background images */
+  z-index: 1;
+}
+
+.qa-image {
+  position: absolute;
+  opacity: 0.2;
+  border: 4px solid white; /* Add white border around images */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.image1 {
+  top: 20px;
+  left: 10%;
+  width: 150px;
+  transform: rotate(-10deg);
+}
+
+.image2 {
+  bottom: 50px;
+  right: 15%;
+  width: 180px;
+  transform: rotate(15deg);
+}
+
+.image3 {
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  transform: translate(-50%, -50%) rotate(-5deg);
+}
