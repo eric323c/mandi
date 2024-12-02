@@ -4,53 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wedding Dashboard</title>
-  <link rel="stylesheet" href="users.css">
+  <link rel="stylesheet" href="/public/users.css">
 </head>
 <body>
-  <div id="app">
-    <h1>Welcome to Your Wedding Dashboard</h1>
-    <form id="profile-form">
-      <label for="firstName">First Name:</label>
-      <input type="text" id="firstName" placeholder="Enter your first name">
-      <label for="lastName">Last Name:</label>
-      <input type="text" id="lastName" placeholder="Enter your last name">
-      <button type="submit">Find My Profile</button>
-    </form>
+  <h1>Welcome to Your Wedding Dashboard</h1>
+  
+  <form id="findProfileForm">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" placeholder="Enter your first name" required>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" placeholder="Enter your last name" required>
+    <button type="submit">Find My Profile</button>
+  </form>
 
-    <div id="profile-container" style="display:none;">
-      <h2>Welcome!</h2>
+  <div id="profileContainer" style="display: none;">
+    <h2>Welcome!</h2>
+    <p>Here’s your personalized dashboard:</p>
+    <div id="userDetails">
       <h3>Your Details</h3>
-      <p>Name: <span id="user-name"></span></p>
-      <p>Role: <span id="user-role"></span></p>
-      <p>RSVP Status: <span id="user-rsvp"></span></p>
-      <p>Dietary Restrictions: <span id="user-diet"></span></p>
-      <h3>Checklist</h3>
-      <ul id="user-checklist"></ul>
+      <p><strong>Name:</strong> <span id="userName"></span></p>
+      <p><strong>Role:</strong> <span id="userRole"></span></p>
+      <p><strong>RSVP Status:</strong> <span id="userRsvp"></span></p>
+      <p><strong>Dietary Restrictions:</strong> <span id="userDietary"></span></p>
+    </div>
+
+    <div id="userTasks">
+      <h3>To-Do List for Bachelors/Bachelorettes</h3>
+      <ul id="taskList"></ul>
+    </div>
+
+    <div id="checklist">
+      <h3>Your Checklist</h3>
+      <ul id="checklistItems"></ul>
     </div>
   </div>
 
-<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
-
-<script>
-  // Your Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyDK7QoOBnf73q8V0H7vdZgeV9knY1GQhZw",
-    authDomain: "mandi-b5b19.firebaseapp.com",
-    projectId: "mandi-b5b19",
-    storageBucket: "mandi-b5b19.appspot.com",
-    messagingSenderId: "53505043322",
-    appId: "1:53505043322:web:dede68f8aeca80c7de84c3",
-    measurementId: "G-T58TB5HC3L"
-  };
-
-  // Initialize Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-</script>
-
-
-  <!-- Users Script -->
-  <script src="users.js"></script>
+  <script src="/public/users.js" defer></script>
 </body>
 </html>
