@@ -19,20 +19,26 @@ form.addEventListener("submit", async (e) => {
   }
 
   try {
-    const userDoc = await firebase
-      .firestore()
-      .collection("guests")
-      .doc(`${firstName}_${lastName}`)
-      .get();
+    const userDoc = await db.collection("guests").doc(`${firstName}_${lastName}`).get();
 
     if (userDoc.exists) {
       const userData = userDoc.data();
       renderUserProfile(userData);
     } else {
-      alert("Profile not found. Please RSVP first!");
+      alert("Profile not found. Creating a new profile...");
+      const defaultData = {
+        firstName,
+        lastName,
+        role: "Guest",
+        rsvpStatus: "Pending",
+        dietaryRestrictions: "None",
+        checklist: []
+      };
+      await db.collection("guests").doc(`${firstName}_${lastName}`).set(defaultData);
+      renderUserProfile(defaultData);
     }
   } catch (error) {
-    console.error("Error fetching user data:", error);
+    console.error("Error fetching or creating user data:", error);
   }
 });
 
