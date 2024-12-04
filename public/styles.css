@@ -392,12 +392,50 @@ color: #ffffff;
   width: 200px;
   transform: translate(-50%, -50%) rotate(-5deg);
 }
+#rsvpForm {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 1em;
+  font-family: 'Playfair Display', serif;
+  background-color: #fff;
+}
+
+#rsvpForm h1 {
+  font-size: 1.5em;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+#rsvpForm p {
+  font-size: 0.9em;
+  text-align: center;
+  margin-bottom: 1em;
+  color: #555;
+}
+
+#rsvpForm label {
+  font-size: 0.85em;
+  margin-bottom: 0.3em;
+  display: block;
+}
+
+#rsvpForm input,
+#rsvpForm select,
+#rsvpForm textarea {
+  width: 100%;
+  padding: 0.5em;
+  font-size: 0.9em;
+  margin-bottom: 0.8em;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
 #rsvpForm button {
   display: block;
-  margin: 1.5em auto;
-  padding: 0.8em 2em;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2em;
+  width: 100%;
+  padding: 0.6em;
+  font-size: 1em;
   color: #fff;
   background-color: #007bff;
   border: none;
@@ -411,17 +449,15 @@ color: #ffffff;
 }
 
 #loginLink {
-  display: block;
-  margin-top: 1em;
-  font-family: 'Arial', sans-serif;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: #555;
   text-align: center;
+  display: block;
+  margin-top: 0.5em;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 #loginLink:hover {
   color: #007bff;
-  text-decoration: underline;
 }
