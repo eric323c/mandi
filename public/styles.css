@@ -392,3 +392,36 @@ color: #ffffff;
   width: 200px;
   transform: translate(-50%, -50%) rotate(-5deg);
 }
+#rsvpForm button {
+  display: block;
+  margin: 1.5em auto;
+  padding: 0.8em 2em;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2em;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#rsvpForm button:hover {
+  background-color: #0056b3;
+}
+
+#loginLink {
+  display: block;
+  margin-top: 1em;
+  font-family: 'Arial', sans-serif;
+  font-size: 0.9em;
+  color: #555;
+  text-align: center;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#loginLink:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
