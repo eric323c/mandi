@@ -145,7 +145,41 @@
     <span class="modal-close" id="closeModal">&times;</span>
     <img id="modalImage" src="" alt="Enlarged Image">
   </div>
-
+  <!--RSVP -->
+<section id="rsvp" style="padding: 2em 0; text-align: center; background-color: #fdf6f0;">
+  <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5em; margin-bottom: 1em;">RSVP</h2>
+  <p style="font-family: 'Arial', sans-serif; font-size: 1.2em; margin-bottom: 2em;">
+    We can't wait to celebrate with you! Please let us know if you'll be attending.
+  </p>
+  <form id="rsvpForm" style="max-width: 500px; margin: 0 auto; text-align: left;">
+    <div style="margin-bottom: 1.5em;">
+      <label for="firstName" style="font-family: 'Arial', sans-serif; font-size: 1em; display: block; margin-bottom: 0.5em;">First Name</label>
+      <input type="text" id="firstName" name="firstName" required style="width: 100%; padding: 0.8em; font-size: 1em; border: 1px solid #ccc; border-radius: 5px;">
+    </div>
+    <div style="margin-bottom: 1.5em;">
+      <label for="lastName" style="font-family: 'Arial', sans-serif; font-size: 1em; display: block; margin-bottom: 0.5em;">Last Name</label>
+      <input type="text" id="lastName" name="lastName" required style="width: 100%; padding: 0.8em; font-size: 1em; border: 1px solid #ccc; border-radius: 5px;">
+    </div>
+    <div style="margin-bottom: 1.5em;">
+      <label for="email" style="font-family: 'Arial', sans-serif; font-size: 1em; display: block; margin-bottom: 0.5em;">Email</label>
+      <input type="email" id="email" name="email" required style="width: 100%; padding: 0.8em; font-size: 1em; border: 1px solid #ccc; border-radius: 5px;">
+    </div>
+    <div style="margin-bottom: 1.5em;">
+      <label for="attendance" style="font-family: 'Arial', sans-serif; font-size: 1em; display: block; margin-bottom: 0.5em;">Will you be attending?</label>
+      <select id="attendance" name="attendance" required style="width: 100%; padding: 0.8em; font-size: 1em; border: 1px solid #ccc; border-radius: 5px;">
+        <option value="yes">Yes, I will be attending</option>
+        <option value="no">No, I cannot attend</option>
+      </select>
+    </div>
+    <div style="margin-bottom: 1.5em;">
+      <label for="message" style="font-family: 'Arial', sans-serif; font-size: 1em; display: block; margin-bottom: 0.5em;">Message for the Couple</label>
+      <textarea id="message" name="message" rows="4" style="width: 100%; padding: 0.8em; font-size: 1em; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+    </div>
+    <button type="submit" style="font-family: 'Playfair Display', serif; font-size: 1.2em; padding: 0.8em 2em; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Submit RSVP
+    </button>
+  </form>
+</section>
   <script src="script.js"></script>
 </body>
 </html>
