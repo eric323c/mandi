@@ -395,27 +395,27 @@ color: #ffffff;
 #rsvpForm {
   max-width: 90%;
   margin: 0 auto;
-  padding: 1em;
+  padding: 0.5em;
   font-family: 'Playfair Display', serif;
-  background-color: #fff;
+  background-color: inherit; /* Matches the page background */
 }
 
 #rsvpForm h1 {
   font-size: 1.5em;
   text-align: center;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.3em;
 }
 
 #rsvpForm p {
   font-size: 0.9em;
   text-align: center;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
   color: #555;
 }
 
 #rsvpForm label {
   font-size: 0.85em;
-  margin-bottom: 0.3em;
+  margin-bottom: 0.2em;
   display: block;
 }
 
@@ -423,9 +423,9 @@ color: #ffffff;
 #rsvpForm select,
 #rsvpForm textarea {
   width: 100%;
-  padding: 0.5em;
-  font-size: 0.9em;
-  margin-bottom: 0.8em;
+  padding: 0.4em;
+  font-size: 0.85em;
+  margin-bottom: 0.5em;
   border: 1px solid #ccc;
   border-radius: 3px;
   box-sizing: border-box;
@@ -434,12 +434,12 @@ color: #ffffff;
 #rsvpForm button {
   display: block;
   width: 100%;
-  padding: 0.6em;
-  font-size: 1em;
+  padding: 0.5em;
+  font-size: 0.9em;
   color: #fff;
   background-color: #007bff;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
